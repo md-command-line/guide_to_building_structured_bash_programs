@@ -9,6 +9,12 @@ set -e
 
 ## Getting past the first file, calling other scripts:
 Running a script from afar is easy, 
+Get the current directory name: [source](https://www.linuxquestions.org/questions/programming-9/bash-how-to-get-current-workin-directory-92961/)
+```bash
+DIR=${PWD##*/}; echo $DIR; 
+# means "PWD with the first part removed, up to, and including the last slash.
+```
+
 <br/>The first challenge a developer runs into is trying to run another script that is nearby the script you are running from afar. 
 
 Scripts know the location of the person running the script 
@@ -118,3 +124,19 @@ In bash everything can be a one liner and copied and pasted directly into termin
 Bash can be used by other languages such as ruby or node-javascript to in a simple way add functionality to your application.
 
 ## Do not always use bash. Come up with an Idea first and let that determine the language you choose.
+
+
+everything below from [source](http://tiswww.case.edu/php/chet/bash/bashref.html)
+## Regarding alias usage:
+Aliases are expanded when a command is read, not when it is executed. Therefore, an alias definition appearing on the same line as another command does not take effect until the next line of input is read. The commands following the alias definition on that line are not affected by the new alias. This behavior is also an issue when functions are executed. Aliases are expanded when a function definition is read, not when the function is executed, because a function definition is itself a command. As a consequence, aliases defined in a function are not available until after that function is executed. To be safe, always put alias definitions on a separate line, and do not use alias in compound commands.
+
+For almost every purpose, shell functions are preferred over aliases.
+
+## Regarding braces vs parameters
+```
+( list )
+Placing a list of commands between parentheses causes a subshell environment to be created
+
+{ list; }
+Placing a list of commands between curly braces causes the list to be executed in the current shell context. 
+```
